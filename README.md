@@ -1,84 +1,124 @@
-# Linear-Regression-from-Scratch
-machine learning project implementing linear regression with gradient descent using pure Python.
+# Linear Regression from Scratch
 
-Overview
+<p align="center">
+  <b>Understanding Machine Learning from First Principles</b>
+  <br>
+  A simple implementation of linear regression using gradient descent in pure Python.
+</p>
 
-The goal of this project is to understand the fundamentals of linear regression and gradient descent by implementing the algorithm from scratch rather than relying on ready-made machine learning libraries.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/ML-From%20Scratch-orange" alt="Machine Learning">
+  <img src="https://img.shields.io/badge/Status-Learning-success" alt="Project status">
+</p>
 
-The model learns a linear relationship between input values and target values by iteratively updating its parameters.
+---
 
-Model
+## About the Project
 
-The prediction function is:
+This project is an exploration of the mathematical foundations of machine learning through code.
 
-[
-\hat{y} = wx + b
-]
+Instead of using ready-made ML libraries, I implemented the core components of linear regression myself to understand how a model learns from data.
 
-Where:
+**The main goals are:**
+- Understand how linear regression makes predictions.
+- Implement Mean Squared Error (MSE).
+- Calculate gradients manually.
+- Implement gradient descent.
+- Investigate how the learning rate affects convergence.
 
-(x) — input feature
+## The Mathematics
 
-(\hat{y}) — predicted value
+### 1. The Model
 
-(w) — weight (slope)
+Linear regression predicts an output using a linear function:
 
-(b) — bias (intercept)
+```text
+ŷ = wx + b
+```
 
-Loss Function
+| Symbol | Meaning |
+|:---|:---|
+| `x` | Input feature |
+| `ŷ` | Predicted value |
+| `w` | Weight (slope) |
+| `b` | Bias (intercept) |
 
-Model performance is evaluated using Mean Squared Error (MSE):
+The model adjusts `w` and `b` to make its predictions closer to the actual values.
 
-[
-MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-]
+### 2. The Loss Function
 
-The objective is to minimize MSE by updating the model parameters with gradient descent.
+To measure prediction error, the model uses Mean Squared Error:
 
-Gradient Descent
+```text
+           n
+MSE = (1/n) Σ (yᵢ - ŷᵢ)²
+          i=1
+```
 
-At each iteration, the gradients of the loss function with respect to the weight and bias are calculated. The parameters are then updated using the learning rate.
+Here, `yᵢ` is the actual value and `ŷᵢ` is the predicted value.
 
-The learning rate controls the size of each update and affects how quickly the model converges.
+The objective is to minimize MSE.
 
-Experiments
+### 3. Gradient Descent
 
-This project explores how different learning rates affect the training process.
+Gradient descent updates the model parameters iteratively:
 
-Planned experiments:
+```text
+w ← w - α · ∂MSE/∂w
+b ← b - α · ∂MSE/∂b
+```
 
-Compare different learning rates.
+Where `α` (learning rate) controls the size of each update.
 
-Observe how MSE changes over training epochs.
+- **Too small:** learning can be slow.
+- **Appropriate:** the model can converge efficiently.
+- **Too large:** updates can overshoot the minimum and cause divergence.
 
-Investigate convergence and divergence.
+## Experiments
 
-Compare the learned parameters with an analytical solution.
+One of the first things I explored was how the learning rate affects training.
 
-Technologies
+| Learning rate | Expected behavior |
+|:---:|:---|
+| `0.001` | Smaller updates, slower convergence |
+| `0.01` | Larger updates, potentially faster convergence |
+| `0.1` | Updates may be too large and cause divergence |
 
-Python
+These are observations to investigate on the current dataset, not universal rules. The behavior depends on the data and the optimization problem.
 
-Basic calculus and linear algebra
+## Tech Stack
 
-Current Status
+- **Language:** Python
+- **Approach:** Implementation from scratch
+- **Core concepts:** Linear regression, MSE, derivatives, gradient descent
 
-The basic linear regression model and gradient descent algorithm have been implemented.
+## Project Structure
 
-The project is currently focused on understanding optimization and experimenting with learning rates.
+```text
+linear-regression-from-scratch/
+├── README.md
+└── linear_regression.py
+```
 
-Future Improvements
+## Roadmap
 
-Plot MSE over training epochs.
+- [x] Implement linear predictions
+- [x] Calculate Mean Squared Error
+- [x] Calculate gradients for weight and bias
+- [x] Implement gradient descent
+- [x] Experiment with learning rates
+- [ ] Plot the loss curve
+- [ ] Compare different learning rates systematically
+- [ ] Compare gradient descent with an analytical solution
+- [ ] Test on additional datasets
 
-Compare learning rates systematically.
+## Why This Project?
 
-Test the model on different datasets.
+I want to understand machine learning beyond simply using existing libraries. Implementing fundamental algorithms from scratch helps me connect the mathematics with the code and build a stronger foundation for studying more advanced ML topics.
 
-Compare gradient descent with an analytical solution.
+---
 
-Improve code organization and documentation.
-
-What I Am Learning
-
-This project is part of my journey into machine learning, with a focus on understanding the mathematics behind ML algorithms and implementing them from first principles.
+<p align="center">
+  <i>Learning machine learning one algorithm at a time.</i>
+</p>
